@@ -2,11 +2,11 @@
 
 require_once '../includes/db.php';
 
-$places_xml = simplexml_load_file('dino-bones.kml');
+$places_xml = simplexml_load_file('volleyball_courts.kml');
 
 $sql = $db->prepare('
-	INSERT INTO dinobones (name, adr, lng, lat)
-	VALUES (:name, :adr, :lng, :lat)
+	INSERT INTO ottawamapped (name, latitude, longitude, address)
+	VALUES (:name, :latitude, :longitude, :address)
 ');
 
 foreach ($places_xml->Document->Folder[0]->Placemark as $place) {
